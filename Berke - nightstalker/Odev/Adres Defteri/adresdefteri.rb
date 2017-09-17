@@ -27,17 +27,17 @@ File.open('adres.txt', 'a+') do |f|
   end
 end
 
-greeting = "- Varolan kayitlari goruntulemek icin 'goruntule'
-- Kayit eklemek icin 'ekle'
-- Kayitlarda arama yapmak icin 'ara'
-- Kayit silmek icin 'sil'
-- Cok onemli bir mesaji goruntulemek icin 'mesaj'
-- Bu mesaji tekrar goruntulemek icin 'yardim'
-- Cikis yapmak icin 'cikis'
+greeting = "- Varolan kayıtları görüntülemek için 'görüntüle'
+- Kayıt eklemek için 'ekle'
+- Kayıtlarda arama yapmak için 'ara'
+- Kayıt silmek için 'sil'
+- Çok önemli bir mesaji görüntülemek için 'mesaj'
+- Bu mesaji tekrar görüntülemek için 'yardım'
+- Çıkış yapmak için 'çıkış'
 yaziniz.\n"
 
-puts "Berkenin rehberine hosgeldiniz! (v0.1)"
-puts "Asagida belirtilen komutlarla isleminizi gerceklestirebilirsiniz."
+puts "Berkenin rehberine hoşgeldiniz! (v0.2)"
+puts "Aşağida belirtilen komutlarla isleminizi gerçekleştirebilirsiniz."
 puts greeting
 
 continue = true
@@ -46,13 +46,13 @@ while continue == true do
 
   choice = gets.chomp
 
-  if choice == "goruntule"
+  if choice == "görüntüle"
     if ad.length == 0
-      puts "Herhangi bir kayit yok. Kayit eklemek icin \"ekle\" komutunu kullanabilirsiniz."
+      puts "Herhangi bir kayıt yok. kayıt eklemek için \"ekle\" komutunu kullanabilirsiniz."
     elsif
       for i in 0..ad.length-1 do
-        puts "#{i+1}. siradaki kayit:"
-        print "Isim\t:", ad.at(i)
+        puts "#{i+1}. sıradaki kayıt:"
+        print "İsim\t:", ad.at(i)
         print "Soyisim\t:", soyad.at(i)
         print "Telefon\t:", telefon.at(i)
         print "Adres\t:", adres.at(i),"\n"
@@ -61,28 +61,28 @@ while continue == true do
 
   elsif choice == "ekle"
 
-    puts "Eklemek istediginiz kayit icin ad giriniz"
+    puts "Eklemek istediğiniz kayıt için ad giriniz"
     adInput = gets
     ad.insert(-1,adInput.to_s)
     File.open('ad.txt','a') do |f|
       f.puts "#{adInput}"
     end
 
-    puts "Eklemek istediginiz kayit icin soyad giriniz"
+    puts "Eklemek istediğiniz kayıt için soyad giriniz"
     soyadInput = gets
     soyad.insert(-1,soyadInput.to_s)
     File.open('soyad.txt','a') do |f|
       f.puts "#{soyadInput}"
     end
 
-    puts "Eklemek istediginiz kayit icin telefon giriniz"
+    puts "Eklemek istediğiniz kayıt için telefon giriniz"
     telefonInput = gets
     telefon.insert(-1,telefonInput.to_s)
     File.open('telefon.txt','a') do |f|
       f.puts "#{telefonInput}"
     end
 
-    puts "Eklemek istediginiz kayit icin adres giriniz"
+    puts "Eklemek istediğiniz kayıt için adres giriniz"
     adresInput = gets
     adres.insert(-1,adresInput.to_s)
     File.open('adres.txt','a') do |f|
@@ -95,13 +95,13 @@ while continue == true do
 
     found = false
     sayac = 1
-    puts "Aramak istediginiz ad, soyad, telefon veya adresini giriniz:"
+    puts "Aramak istediğiniz kayıtın ad, soyad, telefon veya adresini giriniz:"
     aranan = gets.chomp.to_s.downcase
     for i in 0..ad.length-1 do
       if (ad.at(i).include? aranan) || (soyad.at(i).include? aranan) || (telefon.at(i).include? aranan) || (adres.at(i).include? aranan)
-        puts "#{sayac}. eslesen kayit:"
-        print "Sira no\t:", i+1, "\n"
-        print "Isim\t:", ad.at(i)
+        puts "#{sayac}. eşleşen kayıt:"
+        print "Sıra no\t:", i+1, "\n"
+        print "İsim\t:", ad.at(i)
         print "Soyisim\t:", soyad.at(i)
         print "Telefon\t:", telefon.at(i)
         print "Adres\t:", adres.at(i), "\n"
@@ -111,20 +111,20 @@ while continue == true do
     end
 
     if found == false
-      puts "\nKayit bulunamadi."
+      puts "\nkayıt bulunamadı."
     end
 
   elsif choice == "sil"
 
     permission = false
-    puts "Silmek istediginiz kayita ait sira numarasini giriniz:"
+    puts "Silmek istediğiniz kayıta ait sira numarasını giriniz:"
     numara = gets.chomp.to_i
-    puts "Silmek istediginiz kayit bu mu?"
-    print "Isim\t:", ad.at(numara-1)
+    puts "Silmek istediğiniz kayıt bu mu?"
+    print "İsim\t:", ad.at(numara-1)
     print "Soyisim\t:", soyad.at(numara-1)
     print "Telefon\t:", telefon.at(numara-1)
     print "Adres\t:", adres.at(numara-1), "\n"
-    puts "Eger silmek istediginizden eminseniz \"evet\" yaziniz"
+    puts "Eğer silmek istediğinizden eminseniz \"evet\" yazınız"
     onay = gets.chomp
 
     if onay == "evet"
@@ -176,23 +176,23 @@ while continue == true do
         File.open('adres.txt', 'a+')
       end
 
-      puts "Kayit basariyla silindi"
+      puts "Kayıt başarıyla silindi"
 
     else
-      puts "Kayit silinmedi"
+      puts "Kayıt silinmedi"
     end
 
   elsif choice == "mesaj"
 
-    puts "Once pull, sonra push ;)"
+    puts "Önce pull, sonra push ;)"
 
-  elsif choice == "yardim"
+  elsif choice == "yardım"
 
     puts greeting
 
-  elsif choice == "cikis"
+  elsif choice == "çıkış"
 
-    puts "Iyi gunler!"
+    puts "İyi günler!"
     continue = false
 
   elsif
